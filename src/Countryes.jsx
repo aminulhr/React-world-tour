@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Country from "./Country";
 import "./country.css";
-// import Countryes from "./Countryes";
 
 const Countryes = () => {
   const [countries, setCountryes] = useState([]);
   const [VisitCountey, setVisitCountey] = useState([]);
+  const [addFlage, setFlage] = useState([]);
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
@@ -19,6 +19,11 @@ const Countryes = () => {
     setVisitCountey(newCountry);
   };
 
+  const handalFlage = (country) => {
+    const newFlage = [...addFlage, country];
+    setFlage(newFlage);
+  };
+
   return (
     <div>
       <h3>Total Country : {countries.length} </h3>
@@ -28,11 +33,19 @@ const Countryes = () => {
           <li key={country.cca3}>{country.name.common}</li>
         ))}
       </div>
+      {/* Add Flag */}
+      <div className="flag">
+        <h3>Visited Country Flag</h3>
+        {addFlage.map((country) => (
+          <img key={country.ccn3} src={country.flags.png} alt="" srcSet="" />
+        ))}
+      </div>
 
       <div className="part-3">
         {countries.map((country) => (
           <Country
             handalVisitCountey={handalVisitCountey}
+            handalFlage={handalFlage}
             key={country.cca2}
             country={country}
           ></Country>
