@@ -10,3 +10,10 @@
   width: 150px;
   height: 100px;
 }
+
+.part-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 1opx;
+  padding: 1opx;
+}
