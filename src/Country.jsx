@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./country.css";
-const Country = ({ country }) => {
+const Country = ({ country, handalVisitCountey }) => {
   console.log(country);
   const { name, flags } = country;
   const [Visited, setVisited] = useState(false);
@@ -13,6 +13,8 @@ const Country = ({ country }) => {
       <img className="img" src={flags.png} alt="" srcSet="" />
       <button onClick={handalVisit}>{Visited ? "Visited" : "Going"}</button>
       {Visited ? "I visited this Country" : "want to visit"}
+      <button onClick={() => handalVisitCountey(country)}>Mark Visited</button>
+      <button>Add flag</button>
     </div>
   );
 };
